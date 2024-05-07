@@ -1,0 +1,44 @@
+// Problem Statement: Write a program using a piezo element to play a tune after someone knocks.
+
+// Define pin numbers
+const int buzzer = A1;          // Buzzer connected to analog pin A1
+const int knockSensor = A1;     // Piezo connected to analog pin A1
+const int threshold = 400;      // Threshold value to decide when the detected sound is a knock or not
+
+// Variable to store the value read from the sensor pin
+int sensorReading = 0;
+
+void setup() {
+    // Set buzzer pin as input
+    pinMode(buzzer, INPUT);
+}
+
+void loop() {
+    // Read the sensor and store it in the variable sensorReading
+    sensorReading = analogRead(knockSensor);
+
+    // If the sensor reading is greater than the threshold
+    if (sensorReading >= threshold) {
+        // Set buzzer pin as output
+        pinMode(buzzer, OUTPUT);
+
+        // Play the tune
+        tone(buzzer, 261);      // D note (261 Hz)
+        delay(200);
+        noTone(buzzer);
+
+        tone(buzzer, 293);      // E note (293 Hz)
+        delay(200);
+        noTone(buzzer);
+
+        tone(buzzer, 329);      // F note (329 Hz)
+        delay(200);
+        noTone(buzzer);
+
+        tone(buzzer, 349);      // G note (349 Hz)
+        delay(200);
+        noTone(buzzer);
+    }
+
+    delay(100);  // Delay to avoid overloading the serial port buffer
+}

@@ -1,0 +1,25 @@
+// Code to detect obstacle using IR sensor and notify user using LEDs
+
+// Define pin numbers
+const int ledPin = 4;  // LED pin
+const int sensorPin = 9;  // IR sensor pin
+
+void setup() {
+  // Setup LED pin as output and sensor pin as input
+  pinMode(ledPin, OUTPUT);
+  pinMode(sensorPin, INPUT);
+  
+  // Turn on the LED initially
+  digitalWrite(ledPin, HIGH);
+}
+
+void loop() {
+  // Read the sensor input
+  int sensorValue = digitalRead(sensorPin);
+  
+  // If obstacle is detected, turn on the LED; otherwise turn it off
+  if (sensorValue == HIGH)
+    digitalWrite(ledPin, HIGH);  // Turn on LED
+  else
+    digitalWrite(ledPin, LOW);   // Turn off LED
+}
