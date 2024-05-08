@@ -1,0 +1,16 @@
+import requests
+import time
+import random
+
+while 1:
+    try:
+        print("Sending data to Thingspeak")
+        data=random.randint(0,200)
+        URL="https://api.thingspeak.com/update?api_key=2XAJJQ2Y0ZYV70JM&field1="+str(data)
+        r=requests.get(URL)
+        print("Data= ",data)
+        print(r)
+        time.sleep(15)
+    except KeyboardInterrupt:
+        print("Program Terminated.")
+        break
